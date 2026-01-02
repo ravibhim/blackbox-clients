@@ -1,0 +1,30 @@
+# Blackbox storage directory
+.blackbox/
+
+# Python compiled files
+*.pyc
+**/*.pyc
+__pycache__/
+**/__pycache__/
+
+# Python egg files
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
