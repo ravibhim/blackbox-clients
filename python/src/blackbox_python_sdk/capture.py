@@ -38,7 +38,7 @@ def capture_example(
     Returns:
         True if successfully sent to API, False otherwise
     """
-    timestamp = datetime.now()
+    timestamp = datetime.utcnow()
 
     # Send to API storage
     success = save_example(
