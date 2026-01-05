@@ -39,6 +39,9 @@ def init(key: str, api_server: str | None = None) -> None:
     """
     set_config(key, api_server)
 
+    from .config import get_api_server
+    print(f"@blackbox initialized → {get_api_server()}")
+
 
 __all__ = [
     "__version__",
