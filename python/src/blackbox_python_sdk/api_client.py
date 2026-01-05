@@ -5,13 +5,9 @@ from datetime import datetime
 
 import httpx
 
-from .config import get_project_key
+from .config import get_project_key, get_api_server
 
 logger = logging.getLogger(__name__)
-
-# Hardcoded API URL as per requirements
-API_BASE_URL = "http://localhost:9000"
-API_ENDPOINT = f"{API_BASE_URL}/api/v1/examples"
 
 
 def send_example(
@@ -65,8 +61,9 @@ def send_example(
     }
 
     try:
+        api_endpoint = f"{get_api_server()}/api/v1/examples"
         response = httpx.post(
-            API_ENDPOINT,
+            api_endpoint,
             json=payload,
             timeout=5.0,  # 5 second timeout
         )

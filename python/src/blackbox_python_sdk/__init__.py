@@ -5,7 +5,7 @@ Observe how your AI black box functions evolve as you iterate on signatures and 
 """
 
 from .decorator import blackbox, BlackboxFunction
-from .config import set_project_key
+from .config import set_config
 
 # Initialize OpenTelemetry at import time for better performance
 # This eliminates per-call overhead from lazy initialization
@@ -15,7 +15,7 @@ initialize_otel()
 __version__ = "0.1.0"
 
 
-def init(key: str) -> None:
+def init(key: str, api_server: str | None = None) -> None:
     """
     Initialize the Blackbox SDK with a project key.
 
@@ -23,6 +23,7 @@ def init(key: str) -> None:
 
     Args:
         key: Project key from Blackbox Cloud (e.g., 'bbc_proj_...')
+        api_server: Optional API server URL (defaults to https://blackbox-backend-u2gu.onrender.com)
 
     Example:
         import blackbox
@@ -32,8 +33,11 @@ def init(key: str) -> None:
         @blackbox
         def my_function(...):
             ...
+
+        # Or with custom server:
+        blackbox.init(key="bbc_proj_abc123...", api_server="http://localhost:9000")
     """
-    set_project_key(key)
+    set_config(key, api_server)
 
 
 __all__ = [

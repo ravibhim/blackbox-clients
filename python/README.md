@@ -16,6 +16,9 @@ import blackbox
 # Initialize with your project key
 blackbox.init(key="bbc_proj_your_key_here")
 
+# Or with custom API server (for local development)
+blackbox.init(key="bbc_proj_your_key_here", api_server="http://localhost:9000")
+
 # Decorate your function
 @blackbox
 async def generate_response(query: str, context: str) -> dict:
@@ -26,6 +29,17 @@ async def generate_response(query: str, context: str) -> dict:
 # Use normally - examples captured automatically
 result = await generate_response("How do I reset my password?", "Premium user")
 ```
+
+## Configuration
+
+### `blackbox.init()` Parameters
+
+| Parameter | Type | Required | Default | Description |
+|-----------|------|----------|---------|-------------|
+| `key` | `str` | Yes | - | Project key from Blackbox Cloud (e.g., `bbc_proj_...`) |
+| `api_server` | `str` | No | `https://blackbox-backend-u2gu.onrender.com` | API server URL |
+
+## How It Works
 
 When you change the function signature (add params, change types), a new signature version is created automatically.
 
