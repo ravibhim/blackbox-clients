@@ -12,7 +12,7 @@ from .config import set_config
 __version__ = "0.1.0"
 
 
-def init(key: str, api_server: str | None = None) -> None:
+def blackbox_init(key: str, api_server: str | None = None) -> None:
     """
     Initialize the Blackbox SDK with a project key.
 
@@ -25,14 +25,14 @@ def init(key: str, api_server: str | None = None) -> None:
     Example:
         import blackbox
 
-        blackbox.init(key="bbc_proj_abc123...")
+        blackbox.blackbox_init(key="bbc_proj_abc123...")
 
         @blackbox
         def my_function(...):
             ...
 
         # Or with custom server:
-        blackbox.init(key="bbc_proj_abc123...", api_server="http://localhost:9000")
+        blackbox.blackbox_init(key="bbc_proj_abc123...", api_server="http://localhost:9000")
     """
     set_config(key, api_server)
 
@@ -46,7 +46,7 @@ def init(key: str, api_server: str | None = None) -> None:
 
 __all__ = [
     "__version__",
-    "init",
+    "blackbox_init",
     "blackbox",
     "BlackboxFunction",
 ]

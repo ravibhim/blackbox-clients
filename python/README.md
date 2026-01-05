@@ -14,10 +14,10 @@ pip install git+https://github.com/ravibhim/blackbox-clients.git#subdirectory=py
 import blackbox
 
 # Initialize with your project key
-blackbox.init(key="bbc_proj_your_key_here")
+blackbox.blackbox_init(key="bbc_proj_your_key_here")
 
 # Or with custom API server (for local development)
-blackbox.init(key="bbc_proj_your_key_here", api_server="http://localhost:9000")
+blackbox.blackbox_init(key="bbc_proj_your_key_here", api_server="http://localhost:9000")
 
 # Decorate your function
 @blackbox
@@ -32,7 +32,7 @@ result = await generate_response("How do I reset my password?", "Premium user")
 
 ## Configuration
 
-### `blackbox.init()` Parameters
+### `blackbox.blackbox_init()` Parameters
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
