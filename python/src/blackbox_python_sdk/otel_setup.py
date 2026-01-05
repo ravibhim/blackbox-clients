@@ -57,7 +57,8 @@ def initialize_otel():
             logger.info("Created new TracerProvider for Blackbox")
 
             # Add custom HTTP exporter to send LLM spans to backend
-            backend_url = "http://localhost:9000"
+            from .config import get_api_server
+            backend_url = get_api_server()
             http_exporter = BlackboxSpanExporter(backend_url=backend_url)
             http_processor = BatchSpanProcessor(
                 http_exporter,

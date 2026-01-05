@@ -7,10 +7,7 @@ Observe how your AI black box functions evolve as you iterate on signatures and 
 from .decorator import blackbox, BlackboxFunction
 from .config import set_config
 
-# Initialize OpenTelemetry at import time for better performance
-# This eliminates per-call overhead from lazy initialization
-from .otel_setup import initialize_otel
-initialize_otel()
+# OpenTelemetry is initialized in init() after config is set
 
 __version__ = "0.1.0"
 
@@ -38,6 +35,10 @@ def init(key: str, api_server: str | None = None) -> None:
         blackbox.init(key="bbc_proj_abc123...", api_server="http://localhost:9000")
     """
     set_config(key, api_server)
+
+    # Initialize OpenTelemetry AFTER config is set so it uses the correct API server
+    from .otel_setup import initialize_otel
+    initialize_otel()
 
     from .config import get_api_server
     print(f"@blackbox initialized → {get_api_server()}")

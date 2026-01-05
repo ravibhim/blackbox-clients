@@ -18,14 +18,14 @@ class BlackboxSpanExporter(SpanExporter):
     where they will be processed and saved to the database.
     """
 
-    def __init__(self, backend_url: str = None):
+    def __init__(self, backend_url: str):
         """
         Initialize the exporter.
 
         Args:
             backend_url: Base URL of the Blackbox backend API
         """
-        self.backend_url = backend_url or "http://localhost:9000"
+        self.backend_url = backend_url
         self.endpoint = f"{self.backend_url}/api/v1/llm-traces"
         self.client = httpx.Client(timeout=5.0)
 
